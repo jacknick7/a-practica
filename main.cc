@@ -22,5 +22,5 @@ int main() {
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
-    binaryV1::binaryV1(dict, entr);
+    binaryV1(dict, entr);
 }  

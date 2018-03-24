@@ -14,6 +14,3 @@ void binaryV1(vector<int>& dict, vector<int>& entr){
     dic = dict;
     text = entr;
 }
-
-int main(){
-}
