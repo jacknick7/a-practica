@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 
-#include "1-binary-v1.hh"
+#include "binaryV1.hh"
 
 using namespace std;
 
@@ -22,5 +22,5 @@ int main() {
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
-    binaryV1(dict, entr);
+    binaryV1::binaryV1(dict, entr);
 }  
