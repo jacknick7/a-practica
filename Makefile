@@ -3,10 +3,10 @@ OPCIONS = -D_JUDGE_ -D_GLIBCXX_DEBUG -ansi -O2 -Wall -Wextra -Wno-uninitialized 
 all: 1-binary-v1 2-hash-v1
 
 1-binary-v1: 
-	g++ -o 1-binary-v1 1-binary-v1.cc $(OPCIONS)
+	g++ -o 1-binary-v1.x 1-binary-v1.cc $(OPCIONS)
 
 2-hash-v1: 
-	g++ -o 2-hash-v1 2-hash-v1.cc $(OPCIONS)
+	g++ -o 2-hash-v1.x 2-hash-v1.cc $(OPCIONS)
 
 clean:
-	rm *.exe
+	rm *.x
