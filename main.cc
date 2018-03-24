@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 
-#include "1-binary-b1.hh"
+#include "1-binary-v1.hh"
 
 using namespace std;
 
@@ -13,13 +13,14 @@ int main() {
         cout << "No s'ha pogut llegir l'exemple_01.dict." << endl;
     int n;
     File >> n;
-    vector<int> dicData(n), text(2*n);
-    for (int i = 0; i < n; ++i) File >> dicData[i];
+    vector<int> dict(n), entr(2*n);
+    for (int i = 0; i < n; ++i) File >> dict[i];
     File.close();
     File.open("exemples/exemple_01.entr");
     if (not File.is_open())
         cout << "No s'ha pogut llegir l'exemple_01.entr." << endl;
-    for (int i = 0; i < 2*n; ++i) File >> text[i];
+    for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
+    binaryV1(dict, entr);
 }  
