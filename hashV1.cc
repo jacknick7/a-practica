@@ -3,6 +3,7 @@
 using namespace std;
 
 int miss=0;
+int errors=0;
 
 int obtenirClau(int valor, int capacitat){
   return valor % capacitat;
@@ -28,7 +29,7 @@ void inserir(vector<int>& hash, int capacitat, int actual){
     }
     if(!trobat){
       cout << actual << endl;
-      cout << "ERROR! La taula està plena!" << endl;
+      ++errors;
     }
   } 
 }
@@ -36,8 +37,7 @@ void inserir(vector<int>& hash, int capacitat, int actual){
 void hashV1(vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
   int capacitat = 2*mida;
-  cout << "ENTRADA: " << mida << endl;
-  cout << "CAPACITAT: " << capacitat << endl;
+  cout << "OCUPACIÓ: " << 100*((float)mida/(float)capacitat) << "%" << endl;
   vector<int> hash(capacitat, -1);
   for(int i=0; i<mida; ++i){
     inserir(hash, capacitat, dict[i]);
@@ -46,4 +46,5 @@ void hashV1(vector<int>& dict, vector<int>& entr){
     cout << hash[i] << endl;
   }*/
   cout << "SALTS: " << miss << endl;
+  cout << "ERRORS: " << errors << endl;
 }
