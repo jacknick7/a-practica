@@ -2,6 +2,8 @@
 #include <fstream>
 #include <vector>
 
+#include "1-binary-b1.hh"
+
 using namespace std;
 
 int main() {
