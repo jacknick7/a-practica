@@ -20,5 +20,4 @@ void binaryV1(vector<int>& dict, vector<int>& entr) {
 }
 
 int main() {
-    binaryV1();
 }
