@@ -24,27 +24,26 @@ int obtenirClauV2(int valor, int passos, int capacitat, int i1, int i2){
   return (valor+i1*passos+i2*(passos*passos))%capacitat;
 }
 
-int obtenirClau(int versio, int actual, int passos, int capacitat, int i){
+int obtenirClau(int versio, int actual, int passos, int capacitat){
   if(versio==1){
-    return (obtenirClauV1(actual, passos, capacitat)+i)%capacitat;
+    return obtenirClauV1(actual, passos, capacitat);
   }
   else if(versio==2){
-    return (obtenirClauV2(actual, passos, capacitat, c1, c2)+i)%capacitat;
+    return obtenirClauV2(actual, passos, capacitat, c1, c2);
   }
   else{
-    return (obtenirClauV1(actual, passos, capacitat)+i)%capacitat;
+    return obtenirClauV1(actual, passos, capacitat);
   }
 }
 
 void inserir(int versio, vector<int>& hash, int passos, int capacitat, int actual){
   int clau;
-  clau = obtenirClau(versio, actual, passos, capacitat, 0);
+  clau = obtenirClau(versio, actual, passos, capacitat);
   if(hash[clau]==-1){
     hash[clau] = actual;
   }
   else{
-    int i=1;
-    int clau2 = obtenirClau(versio, actual, passos, capacitat, i);
+    int clau2 = (clau+1)%capacitat;
     bool trobat=false;
     while(!trobat&&(clau2!=clau)){
       if(hash[clau2]==-1){
@@ -54,8 +53,7 @@ void inserir(int versio, vector<int>& hash, int passos, int capacitat, int actua
       else{
 	++miss;
       }
-      ++i;
-      clau2 = obtenirClau(versio, actual, passos, capacitat, i);
+      clau2 = (clau2+1)%capacitat;
     }
     if(!trobat){
       cout << actual << endl;
