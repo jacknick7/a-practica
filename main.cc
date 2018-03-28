@@ -3,8 +3,7 @@
 #include <vector>
 
 #include "binaryV1.hh"
-#include "hashV1.hh"
-#include "hashV2.hh"
+#include "hash.hh"
 
 using namespace std;
 
@@ -38,10 +37,10 @@ int main() {
 	cout << "Version [1] or [2]?" << endl;
 	cin >> type;
 	if(type=='1'){
-	    hashV1(dict, entr);
+	    hashing(1, dict, entr);
 	}
 	else if(type=='2'){
-	    hashV2(dict, entr);
+	    hashing(2, dict, entr);
 	}
 	else{
 	    showError();
