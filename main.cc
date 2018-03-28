@@ -4,8 +4,13 @@
 
 #include "binaryV1.hh"
 #include "hashV1.hh"
+#include "hashV2.hh"
 
 using namespace std;
+
+void showError(){
+    cout << "Error, no available choice for entered input." << endl;
+}
 
 int main() {
     ifstream File;
@@ -23,12 +28,26 @@ int main() {
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
-    int type;
+    char type;
+    cout << "[B]inary or [H]ash?" << endl;
     cin >> type;
-    if(type==1){
+    if((type=='B')||(type=='b')){
 	binaryV1(dict, entr);
     }
-    else if(type==2){
-	hashV1(dict, entr);
+    else if((type=='H')||(type=='h')){
+	cout << "Version [1] or [2]?" << endl;
+	cin >> type;
+	if(type=='1'){
+	    hashV1(dict, entr);
+	}
+	else if(type=='2'){
+	    hashV2(dict, entr);
+	}
+	else{
+	    showError();
+	}
+    }
+    else{
+	showError();
     }
 }  

@@ -1,16 +1,16 @@
-#include "hashV1.hh"
+#include "hashV2.hh"
 
 using namespace std;
 
-int missV1=0;
-int errorsV1=0;
+int missV2=0;
+int errorsV2=0;
 
-int obtenirClauV1(int valor, int capacitat){
+int obtenirClauV2(int valor, int capacitat){
   return valor % capacitat;
 }
 
-void inserirV1(vector<int>& hash, int capacitat, int actual){
-  int clau = obtenirClauV1(actual, capacitat);
+void inserirV2(vector<int>& hash, int capacitat, int actual){
+  int clau = obtenirClauV2(actual, capacitat);
   if(hash[clau]==-1){
     hash[clau] = actual;
   }
@@ -23,25 +23,25 @@ void inserirV1(vector<int>& hash, int capacitat, int actual){
 	trobat = true;
       }
       else{
-	++missV1;
+	++missV2;
       }
       i = (i+1)%capacitat;
     }
     if(!trobat){
       cout << actual << endl;
-      ++errorsV1;
+      ++errorsV2;
     }
   } 
 }
 
-void hashV1(vector<int>& dict, vector<int>& entr){
+void hashV2(vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
   int capacitat = 2*mida;
   cout << "OCUPACIÓ: " << 100*((float)mida/(float)capacitat) << "%" << endl;
   vector<int> hash(capacitat, -1);
   for(int i=0; i<mida; ++i){
-    inserirV1(hash, capacitat, dict[i]);
+    inserirV2(hash, capacitat, dict[i]);
   }
-  cout << "SALTS: " << missV1 << endl;
-  cout << "ERRORS: " << errorsV1 << endl;
+  cout << "SALTS: " << missV2 << endl;
+  cout << "ERRORS: " << errorsV2 << endl;
 }
