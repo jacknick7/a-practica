@@ -1,42 +1,61 @@
-#include "hash.hh"
+#include "hashing.hh"
 
 int miss=0;
 int errors=0;
 
-int obtenirClauV1(int valor, int capacitat){
-  return valor % capacitat;
+//C1 i C2 per la versió 2
+int c1 = 11;
+int c2 = 17;
+
+int obtenirPassos(int valor){
+  for(int factor=1; factor<valor; --factor){
+    if(valor%factor==0){
+      return factor;
+    }
+  }
+  return 0;
 }
 
-int obtenirClauV2(int valor, int capacitat){
-  return valor % capacitat;
+int obtenirClauV1(int valor, int passos, int capacitat){
+  return (valor+passos)%capacitat;
 }
 
-void inserir(int versio, vector<int>& hash, int capacitat, int actual){
-  int clau;
+int obtenirClauV2(int valor, int passos, int capacitat, int i1, int i2){
+  return (valor+i1*passos+i2*(passos*passos))%capacitat;
+}
+
+int obtenirClau(int versio, int actual, int passos, int capacitat, int i){
   if(versio==1){
-    clau = obtenirClauV1(actual, capacitat);
+    return (obtenirClauV1(actual, passos, capacitat)+i)%capacitat;
   }
   else if(versio==2){
-    clau = obtenirClauV2(actual, capacitat);
+    return (obtenirClauV2(actual, passos, capacitat, c1, c2)+i)%capacitat;
   }
   else{
-    clau = obtenirClauV1(actual, capacitat);
+    return (obtenirClauV1(actual, passos, capacitat)+i)%capacitat;
   }
+}
+
+void inserir(int versio, vector<int>& hash, int passos, int capacitat, int actual){
+  int clau;
+  clau = obtenirClau(versio, actual, passos, capacitat, 0);
   if(hash[clau]==-1){
     hash[clau] = actual;
   }
   else{
-    int i=((clau+1)%capacitat);
+    int i=1;
+    int clau2 = obtenirClau(versio, actual, passos, capacitat, i);
     bool trobat=false;
-    while(!trobat&&(i!=clau)){
-      if(hash[i]==-1){
-	hash[i] = actual;
+    while(!trobat&&(clau2!=clau)){
+      if(hash[clau2]==-1){
+	hash[clau2] = actual;
 	trobat = true;
       }
       else{
 	++miss;
       }
-      i = (i+1)%capacitat;
+      ++i;
+      clau2 = obtenirClau(versio, actual, passos, capacitat, i);
     }
     if(!trobat){
       cout << actual << endl;
@@ -47,12 +66,14 @@ void inserir(int versio, vector<int>& hash, int capacitat, int actual){
 
 void hashing(int versio, vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
-  int capacitat = 2*mida;
-  cout << "OCUPACIÓ: " << 100*((float)mida/(float)capacitat) << "%" << endl;
+  int capacitat = 1.1*mida;
+  int passos = obtenirPassos(capacitat);
+  cout << "Ocupació: " << 100*((float)mida/(float)capacitat) << "%" << endl;
+  cout << "Var. passos: " << passos << endl;
   vector<int> hash(capacitat, -1);
   for(int i=0; i<mida; ++i){
-    inserir(versio, hash, capacitat, dict[i]);
+    inserir(versio, hash, passos, capacitat, dict[i]);
   }
-  cout << "SALTS: " << miss << endl;
-  cout << "ERRORS: " << errors << endl;
+  cout << "Salts: " << miss << endl;
+  cout << "Errors: " << errors << endl;
 }

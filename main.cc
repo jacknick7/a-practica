@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "binaryV1.hh"
-#include "hash.hh"
+#include "hashing.hh"
 
 using namespace std;
 
@@ -13,7 +13,7 @@ void showError(){
 
 int main() {
     ifstream File;
-    File.open("exemples/exemple_01.dict");
+    File.open("exemples/exemple_02.dict");
     if (not File.is_open())
         cout << "No s'ha pogut llegir l'exemple_01.dict." << endl;
     int n;
@@ -21,7 +21,7 @@ int main() {
     vector<int> dict(n), entr(2*n);
     for (int i = 0; i < n; ++i) File >> dict[i];
     File.close();
-    File.open("exemples/exemple_01.entr");
+    File.open("exemples/exemple_02.entr");
     if (not File.is_open())
         cout << "No s'ha pogut llegir l'exemple_01.entr." << endl;
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
@@ -36,11 +36,8 @@ int main() {
     else if((type=='H')||(type=='h')){
 	cout << "Version [1] or [2]?" << endl;
 	cin >> type;
-	if(type=='1'){
-	    hashing(1, dict, entr);
-	}
-	else if(type=='2'){
-	    hashing(2, dict, entr);
+	if((type=='1')||(type=='2')){
+	    hashing((type-48), dict, entr);
 	}
 	else{
 	    showError();
