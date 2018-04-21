@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "binaryV1.hh"
+#include "binaryV2.hh"
 #include "hashV1.hh"
 
 using namespace std;
@@ -23,12 +24,19 @@ int main() {
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
-    int type;
+    cout << "Selecciona la tecnica a usar [binary | hash | bloom]: ";
+    string type;
     cin >> type;
-    if(type==1){
-	binaryV1(dict, entr);
+    cout << endl;
+    cout << "Selecciona la versio a usar [1 | 2]: ";
+    int version;
+    cin >> version;
+    cout << endl;
+    if(type == "binary"){
+	if (version == 1) binaryV1(dict, entr);
+        else binaryV2(dict, entr);
     }
-    else if(type==2){
-	hashV1(dict, entr);
+    else if(type == "hash"){
+	if (version == 1) hashV1(dict, entr);
     }
 }  

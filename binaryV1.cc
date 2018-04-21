@@ -1,4 +1,5 @@
 #include "binaryV1.hh"
+#include <ctime>
 
 using namespace std;
 
@@ -57,9 +58,9 @@ vector<int> mergeSort(vector<int>& pdic, int& sear) {
 int binarySearch(int l, int r, const vector<int>& dict, int elem, int& sear) {
     if (l <= r) {
         int m = (l + r)/2;
-        if (dict[m] > elem) {
-            ++sear;
-            return binarySearch(l, (m-1), dict, elem, sear);
+        if (dict[m] == elem) {
+            sear += 1;
+            return m;
         }
         else if (dict[m] < elem) {
             sear += 2;
@@ -67,7 +68,7 @@ int binarySearch(int l, int r, const vector<int>& dict, int elem, int& sear) {
         }
         else {
             sear += 2;
-            return m;
+            return binarySearch(l, (m-1), dict, elem, sear);;
         }
     }
     return -1;
@@ -78,19 +79,23 @@ void binaryV1(vector<int>& dict, vector<int>& entr){
     dic = dict;
     text = entr;
     
+    /* Ordenar diccionari */
     int comp1 = 0;
+    int start1 = clock();
     dic = mergeSort(dic, comp1);
+    int stop1 = clock();
     cout << "Numero comparacions per ordenar el diccionari: " << comp1 << endl;
+    cout << "Temps per ordenar el diccionari: " << (stop1-start1)/double(CLOCKS_PER_SEC)*1000 << endl;
     
+    /* Cerca diccionari */
     int comp2 = 0;
+    int start2 = clock();
     for (int i = 0; i < text.size(); ++i) {
         int comp2i = 0;
         int n = binarySearch(0, dic.size() - 1, dic, text[i], comp2i);
-        cout << "Mot " << text[i] ;
-        if (n < 0) cout << " no trobat" << endl;
-        else cout << " trobat" << endl;
-        cout << "Numero comparacions de la cerca: " << comp2i << endl;
         comp2 += comp2i;
     }
+    int stop2 = clock();
     cout << "Numero comparacions total de les cerques: " << comp2 << endl;
+    cout << "Temps per fer totes les cerques: " << (stop2-start2)/double(CLOCKS_PER_SEC)*1000 << endl;
 }
