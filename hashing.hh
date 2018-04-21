@@ -4,4 +4,4 @@
 
 using namespace std;
 
-void hashV1(vector<int>& dict, vector<int>& entr);
+void hashing(int versio, vector<int>& dict, vector<int>& entr);

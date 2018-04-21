@@ -3,14 +3,22 @@
 #include <vector>
 
 #include "binaryV1.hh"
+<<<<<<< HEAD
 #include "binaryV2.hh"
 #include "hashV1.hh"
+=======
+#include "hashing.hh"
+>>>>>>> 60d6546e831b4d40e29792d4d54bc9d106b7be79
 
 using namespace std;
 
+void showError(){
+    cout << "Error, no available choice for entered input." << endl;
+}
+
 int main() {
     ifstream File;
-    File.open("exemples/exemple_01.dict");
+    File.open("exemples/exemple_02.dict");
     if (not File.is_open())
         cout << "No s'ha pogut llegir l'exemple_01.dict." << endl;
     int n;
@@ -18,12 +26,13 @@ int main() {
     vector<int> dict(n), entr(2*n);
     for (int i = 0; i < n; ++i) File >> dict[i];
     File.close();
-    File.open("exemples/exemple_01.entr");
+    File.open("exemples/exemple_02.entr");
     if (not File.is_open())
         cout << "No s'ha pogut llegir l'exemple_01.entr." << endl;
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
+<<<<<<< HEAD
     cout << "Selecciona la tecnica a usar [binary | hash | bloom]: ";
     string type;
     cin >> type;
