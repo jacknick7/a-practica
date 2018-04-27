@@ -4,4 +4,4 @@
 using namespace std;
 
 
-void binaryV2(vector<int>& dict, vector<int>& entr);
+void bloomV1(vector<int>& dict, vector<int>& entr);

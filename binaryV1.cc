@@ -1,7 +1,6 @@
 #include "binaryV1.hh"
 #include <ctime>
 
-using namespace std;
 
 vector<int> dic, text;
 

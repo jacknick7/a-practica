@@ -1,8 +1,8 @@
 #include "binaryV2.hh"
 #include <ctime>
 
-using namespace std;
 
+int comp1, comp1i, comp2, comp2i;
 
 class AVL {
     
@@ -25,15 +25,19 @@ private:
             t->esq = t->dre = NULL;
         }
         else if(x < t->dada) {
+            comp1i += 1;
             t->esq = insert(x, t->esq);
             if(altura(t->esq) - altura(t->dre) == 2) {
+                comp1i += 1;
                 if(x < t->esq->dada) t = singleRightRotate(t);
                 else t = doubleRightRotate(t);
             }
         }
-        else if(x > t->dada) {
+        else {
+            comp1i += 1;
             t->dre = insert(x, t->dre);
             if(altura(t->dre) - altura(t->esq) == 2) {
+                comp1i += 1;
                 if(x > t->dre->dada) t = singleLeftRotate(t);
                 else t = doubleLeftRotate(t);
             }
@@ -55,8 +59,8 @@ private:
         node* u = t->dre;
         t->dre = u->esq;
         u->esq = t;
-        t->altura = max(altura(t->esq), altura(t->dre))+1;
-        u->altura = max(altura(t->dre), t->altura)+1 ;
+        t->altura = max(altura(t->esq), altura(t->dre)) + 1;
+        u->altura = max(altura(t->dre), t->altura) + 1;
         return u;
     }
 
@@ -71,13 +75,27 @@ private:
     }
 
     int altura(node* t) {
-        return (t == NULL ? -1 : t->altura);
+        if (t == NULL) return -1;
+        return t->altura;
+    }
+    
+    bool findInRoot(int x, node* t) {
+        if (t == NULL) return false;
+        else if (x == t->dada) {
+            comp2i += 1;
+            return true;
+        }
+        else if (x < t->dada) {
+            comp2i += 2;
+            findInRoot(x, t->esq);
+        }
+        comp2i += 2;
+        findInRoot(x, t->dre);
     }
 
     void inorder(node* t)
     {
-        if(t == NULL)
-            return;
+        if(t == NULL) return;
         inorder(t->esq);
         cout << t->dada << " ";
         inorder(t->dre);
@@ -90,7 +108,13 @@ public:
     }
 
     void insert(int x) {
+        comp1i = 0;
         root = insert(x, root);
+    }
+    
+    bool find(int x) {
+        comp2i = 0;
+        return findInRoot(x, root);
     }
 
     void display() {
@@ -105,25 +129,24 @@ void binaryV2(vector<int>& dict, vector<int>& entr){
     AVL dic;
     
     /* Ordenar diccionari */
-    int comp1 = 0;
+    comp1 = 0;
     int start1 = clock();
-    for (auto elem : dict) dic.insert(elem);
+    for (auto elem : dict) {
+        dic.insert(elem);
+        comp1 += comp1i;
+    }
     int stop1 = clock();
     cout << "Numero comparacions per ordenar el diccionari: " << comp1 << endl;
     cout << "Temps per ordenar el diccionari: " << (stop1-start1)/double(CLOCKS_PER_SEC)*1000 << endl;
     
-    dic.display();
     /* Cerca diccionari */
-    /*
     int comp2 = 0;
     int start2 = clock();
-    for (int i = 0; i < text.size(); ++i) {
-        int comp2i = 0;
-        int n = binarySearch(0, dic.size() - 1, dic, text[i], comp2i);
+    for (auto elem : entr) {
+        dic.find(elem);
         comp2 += comp2i;
     }
     int stop2 = clock();
     cout << "Numero comparacions total de les cerques: " << comp2 << endl;
     cout << "Temps per fer totes les cerques: " << (stop2-start2)/double(CLOCKS_PER_SEC)*1000 << endl;
-    */
 }
