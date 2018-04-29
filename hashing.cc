@@ -8,12 +8,12 @@ int c1 = 11;
 int c2 = 17;
 
 int obtenirPassos(int valor){
-  for(int factor=1; factor<valor; --factor){
+  /*for(int factor=1; factor<valor; --factor){
     if(valor%factor==0){
       return factor;
     }
-  }
-  return 0;
+  }*/
+  return 13;
 }
 
 int obtenirClauV1(int valor, int passos, int capacitat){
@@ -30,6 +30,9 @@ int obtenirClau(int versio, int actual, int passos, int capacitat){
   }
   else if(versio==2){
     return obtenirClauV2(actual, passos, capacitat, c1, c2);
+  }
+  else if(versio==3){
+    return obtenirClauV3(actual, passos, capacitat);
   }
   else{
     return obtenirClauV1(actual, passos, capacitat);
@@ -64,7 +67,7 @@ void inserir(int versio, vector<int>& hash, int passos, int capacitat, int actua
 
 void hashing(int versio, vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
-  int capacitat = 1.1*mida;
+  int capacitat = 2*mida;
   int passos = obtenirPassos(capacitat);
   cout << "Ocupació: " << 100*((float)mida/(float)capacitat) << "%" << endl;
   cout << "Var. passos: " << passos << endl;
