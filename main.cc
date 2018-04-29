@@ -3,17 +3,15 @@
 #include <vector>
 
 #include "binaryV1.hh"
-#include "hashing.hh"
+#include "binaryV2.hh"
+#include "hashV1.hh"
+#include "bloomV1.hh"
 
 using namespace std;
 
-void showError(){
-    cout << "Error, no available choice for entered input." << endl;
-}
-
 int main() {
     ifstream File;
-    File.open("exemples/exemple_02.dict");
+    File.open("exemples/exemple_01.dict");
     if (not File.is_open())
         cout << "No s'ha pogut llegir l'exemple_01.dict." << endl;
     int n;
@@ -21,29 +19,28 @@ int main() {
     vector<int> dict(n), entr(2*n);
     for (int i = 0; i < n; ++i) File >> dict[i];
     File.close();
-    File.open("exemples/exemple_02.entr");
+    File.open("exemples/exemple_01.entr");
     if (not File.is_open())
         cout << "No s'ha pogut llegir l'exemple_01.entr." << endl;
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
-    char type;
-    cout << "[B]inary or [H]ash?" << endl;
+    cout << "Selecciona la tecnica a usar [binary | hash | bloom]: ";
+    string type;
     cin >> type;
-    if((type=='B')||(type=='b')){
-	binaryV1(dict, entr);
+    cout << endl;
+    cout << "Selecciona la versio a usar [1 | 2]: ";
+    int version;
+    cin >> version;
+    cout << endl;
+    if(type == "binary"){
+	if (version == 1) binaryV1(dict, entr);
+        else binaryV2(dict, entr);
     }
-    else if((type=='H')||(type=='h')){
-	cout << "Version [1] or [2]?" << endl;
-	cin >> type;
-	if((type=='1')||(type=='2')){
-	    hashing((type-48), dict, entr);
-	}
-	else{
-	    showError();
-	}
+    else if (type == "hash"){
+	if (version == 1) hashV1(1, dict, entr);
     }
-    else{
-	showError();
+    else if (type == "bloom"){
+	if (version == 1) bloomV1(dict, entr);
     }
 }  

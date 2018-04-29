@@ -1,4 +1,4 @@
-#include "hashing.hh"
+#include "hashV1.hh"
 
 int miss=0;
 int errors=0;
@@ -65,7 +65,7 @@ void inserir(int versio, vector<int>& hash, int passos, int capacitat, int actua
   } 
 }
 
-void hashing(int versio, vector<int>& dict, vector<int>& entr){
+void hashV1(int versio, vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
   int capacitat = 2*mida;
   int passos = obtenirPassos(capacitat);
