@@ -32,7 +32,9 @@ int hashing(int valor, int capacitat){
 }
 
 int hashing2(int valor, int capacitat){
-  return (valor/capacitat)%capacitat;
+  //return (valor*capacitat)%capacitat;
+  //Sembla que return (valor*c1V1)%capacitat; redueix bastant els errors.
+  return (valor*c1V1)%capacitat;
 }
 
 int obtenirClauV1(int valor, int passos, int capacitat){
@@ -110,7 +112,7 @@ int cercar1T(int versio, vector<int>& hash, int passos, int capacitat, int actua
   return -1;
 }
 
-void inserir2T(int taula, vector<int>& hash, vector<int>& hash2, int passos, int capacitat, int actual, bool primera, pair<int, int> bucle){
+void inserir2T(int taula, vector<int>& hash, vector<int>& hash2, int capacitat, int actual, bool primera, pair<int, int> bucle){
   if(taula==1){
     int clau1;
     clau1 = hashing(actual, capacitat);
@@ -129,7 +131,7 @@ void inserir2T(int taula, vector<int>& hash, vector<int>& hash2, int passos, int
 	if(primera){
 	  bucle = pair<int, int>(actual, tmp);
 	}
-	inserir2T(2, hash, hash2, passos, capacitat, tmp, false, bucle);
+	inserir2T(2, hash, hash2, capacitat, tmp, false, bucle);
       }
     }
   }
@@ -151,10 +153,23 @@ void inserir2T(int taula, vector<int>& hash, vector<int>& hash2, int passos, int
 	if(primera){
 	  bucle = pair<int, int>(actual, tmp);
 	}
-	inserir2T(1, hash, hash2, passos, capacitat, tmp, false, bucle);
+	inserir2T(1, hash, hash2, capacitat, tmp, false, bucle);
       }
     }
   } 
+}
+
+int cercar2T(vector<int>& hash, vector<int>& hash2, int capacitat, int actual){
+  int clau;
+  clau = hashing(actual, capacitat);
+  if(hash[clau]==actual){
+    return clau;
+  }
+  clau = hashing2(actual, capacitat);
+  if(hash[clau]==actual){
+    return clau;
+  }
+  return -1;
 }
 
 int quantsDigits(int valor){
@@ -189,7 +204,7 @@ void imprimir(int posicio, int valor){
 
 void hash1T(int versio, vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
-  int capacitat = 1.5*mida;
+  int capacitat = 2*mida;
   int passos = obtenirPassos(capacitat);
   vector<int> hash(capacitat, -1);
   for(int i=0; i<mida; ++i){
@@ -226,8 +241,6 @@ void hash1T(int versio, vector<int>& dict, vector<int>& entr){
   cout << "Errors: " << errorsV1 << endl;
   cout << "#### CERCA ####" << endl;
   cout << "Mida: " << mida2 << endl;
-  cout << "Salts: " << miss2V1 << endl;
-  cout << "Errors: " << errors2V1 << endl;
   cout << "#### RESULTAT ####" << endl;
   cout << "Trobats: " << trobats << endl;
   cout << "No trobats: " << notrobats << endl;
@@ -245,21 +258,41 @@ void hash1T(int versio, vector<int>& dict, vector<int>& entr){
 
 void hash2T(int versio, vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
-  int capacitat = 1.5*mida;
+  int capacitat = 2*mida;
   int passos = obtenirPassos(capacitat);
   vector<int> hash(capacitat, -1);
   vector<int> hash2(capacitat, -1);
   for(int i=0; i<mida; ++i){
-    inserir2T(1, hash, hash2, passos, capacitat, dict[i], true, pair<int, int>(-1, -1));
+    inserir2T(1, hash, hash2, capacitat, dict[i], true, pair<int, int>(-1, -1));
   }
   
+  int mida2 = entr.size();
+  int trobats = 0;
+  for(int i=0; i<mida2; ++i){
+    int clau = cercar2T(hash, hash2, capacitat, entr[i]);
+    if(clau>=0){
+      ++trobats;
+    }
+  }
+  int notrobats = mida2-trobats;
+  
   cout << "#### INFORMACIÓ ####" << endl;
+  cout << "Cerca: HASH" << endl;
+  cout << "Tècnica: OPEN" << endl;
+  cout << "Funció: CUCKOO" << endl;
   cout << "Ocupació: " << 100*((float)(mida-errorsV1)/(float)(2*capacitat)) << "%" << endl;
   cout << "Var. passos: " << passos << endl;
   cout << "#### INSERCIÓ ####" << endl;
   cout << "Mida: " << mida << endl;
   cout << "Salts: " << missV1 << endl;
-  cout << "errorsV1: " << errorsV1 << endl;
+  cout << "Errors: " << errorsV1 << endl;
+  cout << "#### CERCA ####" << endl;
+  cout << "Mida: " << mida2 << endl;
+  cout << "Salts: " << miss2V1 << endl;
+  cout << "Errors: " << errors2V1 << endl;
+  cout << "#### RESULTAT ####" << endl;
+  cout << "Trobats: " << trobats << endl;
+  cout << "No trobats: " << notrobats << endl;
   cout << "#### TAULA RESULTANT 1 ####" << endl;
   for(int i=1; i<=capacitat; ++i){
     imprimir(i, hash[(i-1)]);
