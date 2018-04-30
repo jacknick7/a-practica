@@ -32,7 +32,7 @@ int hashing(int valor, int capacitat){
 }
 
 int hashing2(int valor, int capacitat){
-  //return (valor*capacitat)%capacitat;
+  //return (valor/capacitat)%capacitat;
   //Sembla que return (valor*c1V1)%capacitat; redueix bastant els errors.
   return (valor*c1V1)%capacitat;
 }
@@ -184,7 +184,7 @@ int quantsDigits(int valor){
     return digits;
 }
 
-void imprimir(int posicio, int valor){
+void imprimirV1(int posicio, int valor){
   --posicio;
   int digitsPos = quantsDigits(posicio);
   if(posicio==0){
@@ -204,7 +204,7 @@ void imprimir(int posicio, int valor){
 
 void hash1T(int versio, vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
-  int capacitat = 2*mida;
+  int capacitat = 1.5*mida;
   int passos = obtenirPassos(capacitat);
   vector<int> hash(capacitat, -1);
   for(int i=0; i<mida; ++i){
@@ -246,7 +246,7 @@ void hash1T(int versio, vector<int>& dict, vector<int>& entr){
   cout << "No trobats: " << notrobats << endl;
   cout << "#### TAULA RESULTANT ####" << endl;
   for(int i=1; i<=capacitat; ++i){
-    imprimir(i, hash[(i-1)]);
+    imprimirV1(i, hash[(i-1)]);
     if((i%elementsV1)==0){
       cout << endl;
     }
@@ -258,7 +258,7 @@ void hash1T(int versio, vector<int>& dict, vector<int>& entr){
 
 void hash2T(int versio, vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
-  int capacitat = 2*mida;
+  int capacitat = 1.5*mida;
   int passos = obtenirPassos(capacitat);
   vector<int> hash(capacitat, -1);
   vector<int> hash2(capacitat, -1);
@@ -295,7 +295,7 @@ void hash2T(int versio, vector<int>& dict, vector<int>& entr){
   cout << "No trobats: " << notrobats << endl;
   cout << "#### TAULA RESULTANT 1 ####" << endl;
   for(int i=1; i<=capacitat; ++i){
-    imprimir(i, hash[(i-1)]);
+    imprimirV1(i, hash[(i-1)]);
     if((i%elementsV1)==0){
       cout << endl;
     }
@@ -305,7 +305,7 @@ void hash2T(int versio, vector<int>& dict, vector<int>& entr){
   }
   cout << "#### TAULA RESULTANT 2 ####" << endl;
   for(int i=1; i<=capacitat; ++i){
-    imprimir(i, hash2[(i-1)]);
+    imprimirV1(i, hash2[(i-1)]);
     if((i%elementsV1)==0){
       cout << endl;
     }
