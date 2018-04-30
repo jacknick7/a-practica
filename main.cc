@@ -5,6 +5,7 @@
 #include "binaryV1.hh"
 #include "binaryV2.hh"
 #include "hashV1.hh"
+#include "hashV2.hh"
 #include "bloomV1.hh"
 
 using namespace std;
@@ -13,7 +14,7 @@ int main() {
     ifstream File;
     File.open("exemples/exemple_01.dict");
     if (not File.is_open())
-        cout << "No s'ha pogut llegir l'exemple_01.dict." << endl;
+        cout << "Error, no s'ha pogut llegir l'exemple_01.dict." << endl;
     int n;
     File >> n;
     vector<int> dict(n), entr(2*n);
@@ -21,7 +22,7 @@ int main() {
     File.close();
     File.open("exemples/exemple_01.entr");
     if (not File.is_open())
-        cout << "No s'ha pogut llegir l'exemple_01.entr." << endl;
+        cout << "Error, no s'ha pogut llegir l'exemple_01.entr." << endl;
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
@@ -66,7 +67,17 @@ int main() {
 	  }
 	}
 	else if(versio=='C'){
-	  cout << "Alerta, la tècnica seleccionada encara no està implementada." << endl;
+	  cout << "Selecciona la funció [M]ove to front o [E]xact fit." << endl;
+	  cin >> versio;
+	  if(versio=='M'){
+	    hashV2(1, dict, entr);
+	  }
+	  else if(versio=='E'){
+	    hashV2(2, dict, entr);
+	  }
+	  else{
+	    cout << "Error, la funció seleccionada és incorrecta." << endl;
+	  }
 	}
 	else{
 	  cout << "Error, la tècnica seleccionada és incorrecta." << endl;
