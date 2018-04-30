@@ -33,7 +33,27 @@ int cercar1V2(vector<list<int>>& hash, int passos, int capacitat, int actual){
   return -1;
 }
 
-void imprimirV2(int posicio, list<int> valors){
+void inserir2V2(vector<vector<int>>& hash, int passos, int capacitat, int actual){
+  int clau;
+  clau = hashing(actual, capacitat);
+  hash[clau].push_back(actual);
+}
+
+int cercar2V2(vector<vector<int>>& hash, int passos, int capacitat, int actual){
+  int clau;
+  clau = hashing(actual, capacitat);
+  int posicio=0;
+  while(posicio<hash[clau].size()){
+    if(hash[clau][posicio]==actual){
+      return posicio;
+    }
+    ++missV2;
+    ++posicio;
+  }
+  return -1;
+}
+
+void imprimir1V2(int posicio, list<int> valors){
   --posicio;
   cout << "[" << posicio << "]";
   list<int>::iterator it = valors.begin();
@@ -43,7 +63,15 @@ void imprimirV2(int posicio, list<int> valors){
   }
 }
 
-void hashV2(int versio, vector<int>& dict, vector<int>& entr){
+void imprimir2V2(int posicio, vector<int> valors){
+  --posicio;
+  cout << "[" << posicio << "]";
+  for(int i=0; i<valors.size(); ++i){
+    cout << " " << valors[i];
+  }
+}
+
+void hashL(vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
   int capacitat = 1.5*mida;
   int passos = obtenirPassos(capacitat);
@@ -79,7 +107,58 @@ void hashV2(int versio, vector<int>& dict, vector<int>& entr){
   cout << "No trobats: " << notrobats << endl;
   cout << "#### TAULA RESULTANT ####" << endl;
   for(int i=1; i<=capacitat; ++i){
-    imprimirV2(i, hash[(i-1)]);
+    imprimir1V2(i, hash[(i-1)]);
     cout << endl;
   }
+}
+
+void hashA(vector<int>& dict, vector<int>& entr){
+    int mida = dict.size();
+  int capacitat = 1.5*mida;
+  int passos = obtenirPassos(capacitat);
+  vector<vector<int>> hash(capacitat, vector<int>(0));
+  for(int i=0; i<mida; ++i){
+    inserir2V2(hash, passos, capacitat, dict[i]);
+  }
+  
+  int mida2 = entr.size();
+  int trobats = 0;
+  for(int i=0; i<mida2; ++i){
+    int clau = cercar2V2(hash, passos, capacitat, entr[i]);
+    if(clau>=0){
+      ++trobats;
+    }
+  }
+  int notrobats = mida2-trobats;
+  
+  cout << "#### INFORMACIÓ ####" << endl;
+  cout << "Cerca: HASH" << endl;
+  cout << "Tècnica: CHAIN" << endl;
+  cout << "Funció: EXACT" << endl;
+  cout << "Ocupació: " << 100*((float)(mida-errorsV2)/(float)capacitat) << "%" << endl;
+  cout << "Var. passos: " << passos << endl;
+  cout << "#### INSERCIÓ ####" << endl;
+  cout << "Mida: " << mida << endl;
+  cout << "Salts: " << missV2 << endl;
+  cout << "Errors: " << errorsV2 << endl;
+  cout << "#### CERCA ####" << endl;
+  cout << "Mida: " << mida2 << endl;
+  cout << "#### RESULTAT ####" << endl;
+  cout << "Trobats: " << trobats << endl;
+  cout << "No trobats: " << notrobats << endl;
+  cout << "#### TAULA RESULTANT ####" << endl;
+  for(int i=1; i<=capacitat; ++i){
+    imprimir2V2(i, hash[(i-1)]);
+    cout << endl;
+  }
+}
+
+void hashV2(int versio, vector<int>& dict, vector<int>& entr){
+  if(versio==1){
+    hashL(dict, entr);
+  }
+  else if(versio==2){
+    hashA(dict, entr);
+  }
+  
 }
