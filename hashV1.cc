@@ -3,6 +3,9 @@
 int missV1=0;
 int errorsV1=0;
 
+int miss2V1=0;
+int errors2V1=0;
+
 vector<int> errors2TV1(0);
 
 //c1 i c2 per la versió 2
@@ -79,10 +82,32 @@ void inserir1T(int versio, vector<int>& hash, int passos, int capacitat, int act
       clau2 = (clau2+1)%capacitat;
     }
     if(!trobat){
-      cout << actual << endl;
+      cout << "ERROR: " << actual << endl;
       ++errorsV1;
     }
   } 
+}
+
+int cercar1T(int versio, vector<int>& hash, int passos, int capacitat, int actual){
+  int clau;
+  clau = obtenirClau(versio, actual, passos, capacitat);
+  if(hash[clau]==actual){
+    return clau;
+  }
+  else{
+    int clau2 = (clau+1)%capacitat;
+    while(clau2!=clau){
+      if(hash[clau2]==actual){
+	return clau2;
+      }
+      else{
+	++miss2V1;
+      }
+      clau2 = (clau2+1)%capacitat;
+    }
+    ++errors2V1;
+  }
+  return -1;
 }
 
 void inserir2T(int taula, vector<int>& hash, vector<int>& hash2, int passos, int capacitat, int actual, bool primera, pair<int, int> bucle){
@@ -145,7 +170,11 @@ int quantsDigits(int valor){
 }
 
 void imprimir(int posicio, int valor){
+  --posicio;
   int digitsPos = quantsDigits(posicio);
+  if(posicio==0){
+    ++digitsPos;
+  }
   int digitsVal = quantsDigits(valor);
   int espais = separacioV1-digitsPos-digitsVal-2;
   cout << "[" << posicio << "]";
@@ -159,21 +188,51 @@ void imprimir(int posicio, int valor){
 }
 
 void hash1T(int versio, vector<int>& dict, vector<int>& entr){
-int mida = dict.size();
+  int mida = dict.size();
   int capacitat = 1.5*mida;
   int passos = obtenirPassos(capacitat);
   vector<int> hash(capacitat, -1);
   for(int i=0; i<mida; ++i){
     inserir1T(versio, hash, passos, capacitat, dict[i]);
   }
-  cout << "#### RESULTATS ####" << endl;
-  cout << "Mida: " << mida << endl;
+  
+  int mida2 = entr.size();
+  int trobats = 0;
+  for(int i=0; i<mida2; ++i){
+    int clau = cercar1T(versio, hash, passos, capacitat, entr[i]);
+    if(clau>=0){
+      ++trobats;
+    }
+  }
+  int notrobats = mida2-trobats;
+  
+  cout << "#### INFORMACIÓ ####" << endl;
+  cout << "Cerca: HASH" << endl;
+  cout << "Tècnica: OPEN" << endl;
+  if(versio==1){
+    cout << "Funció: LINEAR" << endl;
+  }
+  else if(versio==2){
+    cout << "Funció: QUADRATIC" << endl;
+  }
+  else if(versio==3){
+    cout << "Funció: DOUBLE" << endl;
+  }
   cout << "Ocupació: " << 100*((float)(mida-errorsV1)/(float)capacitat) << "%" << endl;
   cout << "Var. passos: " << passos << endl;
+  cout << "#### INSERCIÓ ####" << endl;
+  cout << "Mida: " << mida << endl;
   cout << "Salts: " << missV1 << endl;
-  cout << "errorsV1: " << errorsV1 << endl;
+  cout << "Errors: " << errorsV1 << endl;
+  cout << "#### CERCA ####" << endl;
+  cout << "Mida: " << mida2 << endl;
+  cout << "Salts: " << miss2V1 << endl;
+  cout << "Errors: " << errors2V1 << endl;
+  cout << "#### RESULTAT ####" << endl;
+  cout << "Trobats: " << trobats << endl;
+  cout << "No trobats: " << notrobats << endl;
   cout << "#### TAULA RESULTANT ####" << endl;
-  for(int i=1; i<=mida; ++i){
+  for(int i=1; i<=capacitat; ++i){
     imprimir(i, hash[(i-1)]);
     if((i%elementsV1)==0){
       cout << endl;
@@ -185,7 +244,7 @@ int mida = dict.size();
 }
 
 void hash2T(int versio, vector<int>& dict, vector<int>& entr){
-int mida = dict.size();
+  int mida = dict.size();
   int capacitat = 1.5*mida;
   int passos = obtenirPassos(capacitat);
   vector<int> hash(capacitat, -1);
@@ -193,14 +252,16 @@ int mida = dict.size();
   for(int i=0; i<mida; ++i){
     inserir2T(1, hash, hash2, passos, capacitat, dict[i], true, pair<int, int>(-1, -1));
   }
-  cout << "#### RESULTATS ####" << endl;
-  cout << "Mida: " << mida << endl;
+  
+  cout << "#### INFORMACIÓ ####" << endl;
   cout << "Ocupació: " << 100*((float)(mida-errorsV1)/(float)(2*capacitat)) << "%" << endl;
   cout << "Var. passos: " << passos << endl;
+  cout << "#### INSERCIÓ ####" << endl;
+  cout << "Mida: " << mida << endl;
   cout << "Salts: " << missV1 << endl;
   cout << "errorsV1: " << errorsV1 << endl;
   cout << "#### TAULA RESULTANT 1 ####" << endl;
-  for(int i=1; i<=mida; ++i){
+  for(int i=1; i<=capacitat; ++i){
     imprimir(i, hash[(i-1)]);
     if((i%elementsV1)==0){
       cout << endl;
@@ -210,7 +271,7 @@ int mida = dict.size();
     cout << endl;
   }
   cout << "#### TAULA RESULTANT 2 ####" << endl;
-  for(int i=1; i<=mida; ++i){
+  for(int i=1; i<=capacitat; ++i){
     imprimir(i, hash2[(i-1)]);
     if((i%elementsV1)==0){
       cout << endl;

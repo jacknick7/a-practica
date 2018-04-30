@@ -16,6 +16,7 @@ int separacioV2 = 15;
 int elementsV2 = 5;
 
 void hashV2(int versio, vector<int>& dict, vector<int>& entr){
+  cout << "Alerta, la tècnica seleccionada no està implementada encara." << endl;
   /*if((versio>0)&&(versio<4)){
     hash1T(versio, dict, entr);
   }
