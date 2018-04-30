@@ -1,4 +1,4 @@
-#include "hashV1.hh"
+#include "hash.hh"
 
 int miss=0;
 int errors=0;
@@ -16,12 +16,24 @@ int obtenirPassos(int valor){
   return 13;
 }
 
+int hashing(int valor, int capacitat){
+  return valor%capacitat;
+}
+
+int hashing2(int valor, int capacitat){
+  return valor%capacitat;
+}
+
 int obtenirClauV1(int valor, int passos, int capacitat){
-  return (valor+passos)%capacitat;
+  return (hashing(valor, capacitat)+passos)%capacitat;
 }
 
 int obtenirClauV2(int valor, int passos, int capacitat, int i1, int i2){
-  return (valor+i1*passos+i2*(passos*passos))%capacitat;
+  return (hashing(valor, capacitat)+i1*passos+i2*(passos*passos))%capacitat;
+}
+
+int obtenirClauV3(int valor, int passos, int capacitat){
+  return (hashing(valor, capacitat)+passos*hashing2(valor, capacitat))%capacitat;
 }
 
 int obtenirClau(int versio, int actual, int passos, int capacitat){
@@ -65,9 +77,9 @@ void inserir(int versio, vector<int>& hash, int passos, int capacitat, int actua
   } 
 }
 
-void hashV1(int versio, vector<int>& dict, vector<int>& entr){
+void hashV(int versio, vector<int>& dict, vector<int>& entr){
   int mida = dict.size();
-  int capacitat = 2*mida;
+  int capacitat = 1.25*mida;
   int passos = obtenirPassos(capacitat);
   cout << "Ocupació: " << 100*((float)mida/(float)capacitat) << "%" << endl;
   cout << "Var. passos: " << passos << endl;

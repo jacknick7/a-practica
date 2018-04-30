@@ -4,7 +4,7 @@
 
 #include "binaryV1.hh"
 #include "binaryV2.hh"
-#include "hashV1.hh"
+#include "hash.hh"
 #include "bloomV1.hh"
 
 using namespace std;
@@ -25,22 +25,23 @@ int main() {
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
-    cout << "Selecciona la tecnica a usar [binary | hash | bloom]: ";
+    cout << "Selecciona la tècnica a utilitzar (binary, hash o bloom)." << endl;
     string type;
     cin >> type;
-    cout << endl;
-    cout << "Selecciona la versio a usar [1 | 2]: ";
-    int version;
-    cin >> version;
-    cout << endl;
     if(type == "binary"){
+	cout << "Selecciona la versió a utilitzar (1 o 2)." << endl;
+	int version;
+	cin >> version;
 	if (version == 1) binaryV1(dict, entr);
         else binaryV2(dict, entr);
     }
     else if (type == "hash"){
-	if (version == 1) hashV1(1, dict, entr);
+	cout << "Selecciona la versió a utilitzar (1, 2 o 3)." << endl;
+	int version;
+	cin >> version;
+	hashV(version, dict, entr);
     }
     else if (type == "bloom"){
-	if (version == 1) bloomV1(dict, entr);
+	bloomV1(dict, entr);
     }
 }  
