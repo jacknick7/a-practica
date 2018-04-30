@@ -4,7 +4,7 @@
 
 #include "binaryV1.hh"
 #include "binaryV2.hh"
-#include "hash.hh"
+#include "hashV1.hh"
 #include "bloomV1.hh"
 
 using namespace std;
@@ -25,23 +25,57 @@ int main() {
     for (int i = 0; i < 2*n; ++i) File >> entr[i];
     File.close();
     
-    cout << "Selecciona la tècnica a utilitzar (binary, hash o bloom)." << endl;
+    cout << "Selecciona la cerca [B]inary, [H]ash o [BL]oom." << endl;
     string type;
     cin >> type;
-    if(type == "binary"){
-	cout << "Selecciona la versió a utilitzar (1 o 2)." << endl;
-	int version;
-	cin >> version;
-	if (version == 1) binaryV1(dict, entr);
-        else binaryV2(dict, entr);
+    if(type == "B"){
+	cout << "Selecciona la versió [1] o [2]." << endl;
+	int versio;
+	cin >> versio;
+	if(versio==1){
+	  binaryV1(dict, entr);
+	}
+        else if(versio==2){
+	  binaryV2(dict, entr);
+	}
+	else{
+	  cout << "Error, la versió seleccionada és incorrecta." << endl;
+	}
     }
-    else if (type == "hash"){
-	cout << "Selecciona la versió a utilitzar (1, 2 o 3)." << endl;
-	int version;
-	cin >> version;
-	hashV(version, dict, entr);
+    else if (type == "H"){
+	cout << "Selecciona la tècnica [O]pen o [C]hain." << endl;
+	char versio;
+	cin >> versio;
+	if(versio=='O'){
+	  cout << "Selecciona la funció [L]inear, [Q]uadratic, [D]ouble o [C]uckoo." << endl;
+	  cin >> versio;
+	  if(versio=='L'){
+	    hashV1(1, dict, entr);
+	  }
+	  else if(versio=='Q'){
+	    hashV1(2, dict, entr);
+	  }
+	  else if(versio=='D'){
+	    hashV1(3, dict, entr);
+	  }
+	  else if(versio=='C'){
+	    hashV1(4, dict, entr);
+	  }
+	  else{
+	    cout << "Error, la funció seleccionada és incorrecta." << endl;
+	  }
+	}
+	else if(versio=='C'){
+	  cout << "Alerta, la tècnica seleccionada encara no està implementada." << endl;
+	}
+	else{
+	  cout << "Error, la tècnica seleccionada és incorrecta." << endl;
+	}
     }
-    else if (type == "bloom"){
+    else if(type == "BL"){
 	bloomV1(dict, entr);
+    }
+    else{
+      cout << "Error, la cerca seleccionada és incorrecta." << endl;
     }
 }  

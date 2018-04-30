@@ -1,4 +1,4 @@
-#include "hash.hh"
+#include "hashV1.hh"
 
 int miss=0;
 int errors=0;
@@ -21,7 +21,7 @@ int hashing(int valor, int capacitat){
 }
 
 int hashing2(int valor, int capacitat){
-  return valor%capacitat;
+  return (valor/capacitat)%capacitat;
 }
 
 int obtenirClauV1(int valor, int passos, int capacitat){
@@ -77,9 +77,9 @@ void inserir(int versio, vector<int>& hash, int passos, int capacitat, int actua
   } 
 }
 
-void hashV(int versio, vector<int>& dict, vector<int>& entr){
-  int mida = dict.size();
-  int capacitat = 1.25*mida;
+void hash1T(int versio, vector<int>& dict, vector<int>& entr){
+int mida = dict.size();
+  int capacitat = 1.5*mida;
   int passos = obtenirPassos(capacitat);
   cout << "Ocupació: " << 100*((float)mida/(float)capacitat) << "%" << endl;
   cout << "Var. passos: " << passos << endl;
@@ -89,4 +89,28 @@ void hashV(int versio, vector<int>& dict, vector<int>& entr){
   }
   cout << "Salts: " << miss << endl;
   cout << "Errors: " << errors << endl;
+}
+
+void hash2T(int versio, vector<int>& dict, vector<int>& entr){
+int mida = dict.size();
+  int capacitat = 1.5*mida;
+  int passos = obtenirPassos(capacitat);
+  cout << "Ocupació: " << 100*((float)mida/(float)(2*capacitat)) << "%" << endl;
+  cout << "Var. passos: " << passos << endl;
+  vector<int> hash(capacitat, -1);
+  vector<int> hash2(capacitat, -1);
+  /*for(int i=0; i<mida; ++i){
+    inserir(versio, hash, passos, capacitat, dict[i]);
+  }
+  cout << "Salts: " << miss << endl;
+  cout << "Errors: " << errors << endl;*/
+}
+
+void hashV1(int versio, vector<int>& dict, vector<int>& entr){
+  if((versio>0)&&(versio<4)){
+    hash1T(versio, dict, entr);
+  }
+  else if(versio==4){
+    hash2T(versio, dict, entr);
+  }
 }
