@@ -71,7 +71,7 @@ void inserir1T(int versio, vector<int>& hash, int passos, int capacitat, int act
     hash[clau] = actual;
   }
   else{
-    int clau2 = (clau+1)%capacitat;
+    int clau2 = (clau+passos)%capacitat;
     bool trobat=false;
     while(!trobat&&(clau2!=clau)){
       if(hash[clau2]==-1){
@@ -81,7 +81,7 @@ void inserir1T(int versio, vector<int>& hash, int passos, int capacitat, int act
       else{
 	++missV1;
       }
-      clau2 = (clau2+1)%capacitat;
+      clau2 = (clau2+passos)%capacitat;
     }
     if(!trobat){
       cout << "ERROR: " << actual << endl;
