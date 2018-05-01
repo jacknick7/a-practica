@@ -12,8 +12,12 @@ Var. passos: 13
 Mida: 1000
 Salts: 1084
 Errors: 0
+Temps: 0.064
 #### CERCA ####
 Mida: 2000
+Temps total: 1.552
+Temps trobats: 0.068
+Temps no trobats: 0.715
 #### RESULTAT ####
 Trobats: 196
 No trobats: 1804
