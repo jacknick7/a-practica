@@ -132,18 +132,29 @@ void hashA(vector<int>& dict, vector<int>& entr){
   int capacitat = 1.5*mida;
   int passos = obtenirPassos(capacitat);
   vector<vector<int>> hash(capacitat, vector<int>(0));
+  int start1 = clock();
   for(int i=0; i<mida; ++i){
     inserir2V2(hash, passos, capacitat, dict[i]);
   }
+  int stop1 = clock();
   
   int mida2 = entr.size();
   int trobats = 0;
+  int clockSi = 0, clockNo = 0;
+  int start2 = clock();
   for(int i=0; i<mida2; ++i){
+    int start3 = clock();
     int clau = cercar2V2(hash, passos, capacitat, entr[i]);
+    int stop3 = clock();
     if(clau>=0){
       ++trobats;
+      clockSi += (stop3-start3);
+    }
+    else{
+      clockNo += (stop3-start3);
     }
   }
+  int stop2 = clock();
   int notrobats = mida2-trobats;
   
   cout << "#### INFORMACIÓ ####" << endl;
@@ -156,8 +167,12 @@ void hashA(vector<int>& dict, vector<int>& entr){
   cout << "Mida: " << mida << endl;
   cout << "Salts: " << missV2 << endl;
   cout << "Errors: " << errorsV2 << endl;
+  cout << "Temps: " << (stop1-start1)/double(CLOCKS_PER_SEC)*1000 << endl;
   cout << "#### CERCA ####" << endl;
   cout << "Mida: " << mida2 << endl;
+  cout << "Temps total: " << (stop2-start2)/double(CLOCKS_PER_SEC)*1000 << endl;
+  cout << "Temps trobats: " << clockSi/double(CLOCKS_PER_SEC)*1000 << endl;
+  cout << "Temps no trobats: " << clockNo/double(CLOCKS_PER_SEC)*1000 << endl;
   cout << "#### RESULTAT ####" << endl;
   cout << "Trobats: " << trobats << endl;
   cout << "No trobats: " << notrobats << endl;
