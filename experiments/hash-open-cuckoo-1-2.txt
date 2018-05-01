@@ -1,0 +1,33 @@
+Selecciona l'entrada [1], [2], [3], [4] o [5].
+Selecciona la cerca [B]inary, [H]ash o [BL]oom.
+Selecciona la tècnica [O]pen o [C]hain.
+Selecciona la funció [L]inear, [Q]uadratic, [D]ouble o [C]uckoo.
+#### INFORMACIÓ ####
+Cerca: HASH
+Tècnica: OPEN
+Funció: CUCKOO
+Ocupació: 25%
+Var. passos: 13
+#### INSERCIÓ ####
+Mida: 8
+Salts: 14
+Errors: 2
+Temps: 0.015
+#### CERCA ####
+Mida: 16
+Salts: 0
+Errors: 0
+Temps total: 0.013
+Temps trobats: 0.001
+Temps no trobats: 0.006
+#### RESULTAT ####
+Trobats: 3
+No trobats: 13
+#### TAULA RESULTANT 1 ####
+[0] 9540       [1]            [2]            [3]            [4] 3196       
+[5]            [6]            [7] 7255       [8]            [9]            
+[10]           [11] 9611      
+#### TAULA RESULTANT 2 ####
+[0] 9744       [1]            [2]            [3]            [4]            
+[5]            [6]            [7]            [8] 5176       [9]            
+[10]           [11]           

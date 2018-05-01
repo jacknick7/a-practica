@@ -1,0 +1,36 @@
+Selecciona l'entrada [1], [2], [3], [4] o [5].
+Selecciona la cerca [B]inary, [H]ash o [BL]oom.
+Selecciona la tècnica [O]pen o [C]hain.
+Selecciona la funció [M]ove to front o [E]xact fit.
+#### INFORMACIÓ ####
+Cerca: HASH
+Tècnica: CHAIN
+Funció: MOVE
+Ocupació: 66.6667%
+Var. passos: 13
+#### INSERCIÓ ####
+Mida: 8
+Salts: 21
+Errors: 0
+Temps: 0.003
+#### CERCA ####
+Mida: 16
+Temps total: 0.014
+Temps trobats: 0.003
+Temps no trobats: 0.002
+#### RESULTAT ####
+Trobats: 7
+No trobats: 9
+#### TAULA RESULTANT ####
+[0] 9540 9744
+[1]
+[2]
+[3]
+[4] 820 6664 3196 5176
+[5]
+[6]
+[7] 7255
+[8]
+[9]
+[10]
+[11] 9611
