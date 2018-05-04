@@ -2,7 +2,7 @@
 
 rm parseig.txt
 
-for FITXER in experiments/hash-chain-exact-*.txt; do
+for FITXER in experiments-hash/hash-chain-exact-*.txt; do
 	#cat ${FITXER} >> parseig.txt
 	S=`sed -n '13p' ${FITXER} | awk '{print $2}'`
 	E=`sed -n '14p' ${FITXER} | awk '{print $2}'`
