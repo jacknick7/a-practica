@@ -3,46 +3,46 @@
 
 // Els bools en C++ ocupen 1 byte per tenir @ optima,
 // en futures versions usar setbit
-vector<bool> bloomTab;
-int desp;
+vector<bool> bloomTabV2;
+int despV2;
 
-int hashF1(int x) {
-    return x % desp; 
+int hashF1V2(int x) {
+    return x % despV2; 
 }
 
-int hashF2(int x) {
-    return ((x + 1) % (bloomTab.size() - desp)) + desp;
+int hashF2V2(int x) {
+    return ((x + 1) % (bloomTabV2.size() - despV2)) + despV2;
 }
 
-int hashF3(int x) {
-    return (((x % 37) + x) % (bloomTab.size() - 2 * desp)) + 2 * desp;
+int hashF3V2(int x) {
+    return (((x % 37) + x) % (bloomTabV2.size() - 2 * despV2)) + 2 * despV2;
 }
 
-int hashF4(int x) {
-    return ((x * 7) % (bloomTab.size() - 3 * desp)) + 3 * desp;
+int hashF4V2(int x) {
+    return ((x * 7) % (bloomTabV2.size() - 3 * despV2)) + 3 * despV2;
 }
 
-void makeTable(vector<int>& dict) {
-    bloomTab = vector<bool> (dict.size() * 28, false);
-    desp = 7 * dict.size();
+void makeTableV2(vector<int>& dict) {
+    bloomTabV2 = vector<bool> (dict.size() * 28, false);
+    despV2 = 7 * dict.size();
     for (auto elem : dict) {
-        bloomTab[hashF1(elem)] = true;
-        bloomTab[hashF2(elem)] = true;
-        bloomTab[hashF3(elem)] = true;
-        bloomTab[hashF4(elem)] = true;
+        bloomTabV2[hashF1V2(elem)] = true;
+        bloomTabV2[hashF2V2(elem)] = true;
+        bloomTabV2[hashF3V2(elem)] = true;
+        bloomTabV2[hashF4V2(elem)] = true;
     }
 }
 
-bool maybe(int x) {
-    return bloomTab[hashF1(x)] and bloomTab[hashF2(x)]
-           and bloomTab[hashF3(x)] and bloomTab[hashF4(x)];
+bool maybeV2(int x) {
+    return bloomTabV2[hashF1V2(x)] and bloomTabV2[hashF2V2(x)]
+           and bloomTabV2[hashF3V2(x)] and bloomTabV2[hashF4V2(x)];
 }
 
 void bloomV2(vector<int>& dict, vector<int>& entr){
     
     /* Crear la taula de bloom */
     int start1 = clock();
-    makeTable(dict);
+    makeTableV2(dict);
     int stop1 = clock();
     cout << "Temps per generar la taula de bloom: " << (stop1-start1)/double(CLOCKS_PER_SEC)*1000 << endl;
     
@@ -50,7 +50,7 @@ void bloomV2(vector<int>& dict, vector<int>& entr){
     vector<int> posibles;
     int start2 = clock();
     for (auto elem : entr) {
-        if (maybe(elem)) posibles.push_back(elem);
+        if (maybeV2(elem)) posibles.push_back(elem);
     }
     int stop2 = clock();
     int falsPositiu = 0;
