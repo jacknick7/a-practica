@@ -1,0 +1,226 @@
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 1
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 16
+Temps per ordenar el diccionari: 0.001
+Numero comparacions total de les cerques: 105
+Temps per fer totes les cerques: 0
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 1
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 16
+Temps per ordenar el diccionari: 0.001
+Numero comparacions total de les cerques: 105
+Temps per fer totes les cerques: 0
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 1
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 16
+Temps per ordenar el diccionari: 0.001
+Numero comparacions total de les cerques: 105
+Temps per fer totes les cerques: 0
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 1
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 16
+Temps per ordenar el diccionari: 0
+Numero comparacions total de les cerques: 105
+Temps per fer totes les cerques: 0
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 1
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 16
+Temps per ordenar el diccionari: 0
+Numero comparacions total de les cerques: 105
+Temps per fer totes les cerques: 0
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 2
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8689
+Temps per ordenar el diccionari: 0.06
+Numero comparacions total de les cerques: 48813
+Temps per fer totes les cerques: 0.11
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 2
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8689
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 48813
+Temps per fer totes les cerques: 0.108
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 2
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8689
+Temps per ordenar el diccionari: 0.057
+Numero comparacions total de les cerques: 48813
+Temps per fer totes les cerques: 0.108
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 2
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8689
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 48813
+Temps per fer totes les cerques: 0.107
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 2
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8689
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 48813
+Temps per fer totes les cerques: 0.106
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 3
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8702
+Temps per ordenar el diccionari: 0.059
+Numero comparacions total de les cerques: 49108
+Temps per fer totes les cerques: 0.112
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 3
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8702
+Temps per ordenar el diccionari: 0.057
+Numero comparacions total de les cerques: 49108
+Temps per fer totes les cerques: 0.108
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 3
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8702
+Temps per ordenar el diccionari: 0.057
+Numero comparacions total de les cerques: 49108
+Temps per fer totes les cerques: 0.108
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 3
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8702
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 49108
+Temps per fer totes les cerques: 0.107
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 3
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8702
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 49108
+Temps per fer totes les cerques: 0.107
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 4
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8721
+Temps per ordenar el diccionari: 0.059
+Numero comparacions total de les cerques: 49005
+Temps per fer totes les cerques: 0.11
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 4
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8721
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 49005
+Temps per fer totes les cerques: 0.143
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 4
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8721
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 49005
+Temps per fer totes les cerques: 0.108
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 4
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8721
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 49005
+Temps per fer totes les cerques: 0.107
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 4
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 8721
+Temps per ordenar el diccionari: 0.058
+Numero comparacions total de les cerques: 49005
+Temps per fer totes les cerques: 0.107
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 5
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 55208
+Temps per ordenar el diccionari: 0.475
+Numero comparacions total de les cerques: 304652
+Temps per fer totes les cerques: 0.853
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 5
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 55208
+Temps per ordenar el diccionari: 0.408
+Numero comparacions total de les cerques: 304652
+Temps per fer totes les cerques: 1.074
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 5
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 55208
+Temps per ordenar el diccionari: 0.418
+Numero comparacions total de les cerques: 304652
+Temps per fer totes les cerques: 0.839
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 5
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 55208
+Temps per ordenar el diccionari: 0.414
+Numero comparacions total de les cerques: 304652
+Temps per fer totes les cerques: 0.69
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 5
+#@#@#@#@#
+Numero comparacions per ordenar el diccionari: 55208
+Temps per ordenar el diccionari: 0.357
+Numero comparacions total de les cerques: 304652
+Temps per fer totes les cerques: 0.756
+#&#&#&#&#
