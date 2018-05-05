@@ -4,6 +4,9 @@
 
 int comp1, comp1i, comp2, comp2i;
 
+/* Class AVL representa un arbre auto-balancejat AVL ideal
+ * per fer cerques binaries (altura del arbre serà lgn)
+ */
 class AVL {
     
 private:
@@ -24,8 +27,11 @@ private:
             t->altura = 0;
             t->esq = t->dre = NULL;
         }
+        else if (x == t->dada) {
+            return t;
+        }
         else if(x < t->dada) {
-            comp1i += 1;
+            comp1i += 2;
             t->esq = insert(x, t->esq);
             if(altura(t->esq) - altura(t->dre) == 2) {
                 comp1i += 1;
@@ -34,7 +40,7 @@ private:
             }
         }
         else {
-            comp1i += 1;
+            comp1i += 2;
             t->dre = insert(x, t->dre);
             if(altura(t->dre) - altura(t->esq) == 2) {
                 comp1i += 1;
@@ -80,7 +86,9 @@ private:
     }
     
     bool findInRoot(int x, node* t) {
-        if (t == NULL) return false;
+        if (t == NULL){
+	    return false;
+	}
         else if (x == t->dada) {
             comp2i += 1;
             return true;
@@ -89,8 +97,11 @@ private:
             comp2i += 2;
             findInRoot(x, t->esq);
         }
-        comp2i += 2;
-        findInRoot(x, t->dre);
+        else {
+	    comp2i += 2;
+	    findInRoot(x, t->dre);
+	}
+        return false;
     }
 
     void inorder(node* t)
@@ -103,21 +114,33 @@ private:
 
 public:
     
+    /* Pre: --
+     * Post: es crea un arbre AVL buit
+     */
     AVL() {
         root = NULL;
     }
 
+    /* Pre: --
+     * Post: si x no era en l'arbre, s'afegeix, si no l'arbre no canvia
+     */
     void insert(int x) {
         comp1i = 0;
         root = insert(x, root);
     }
     
+    /* Pre: --
+     * Post: si x era en l'arbre, retorna cert, si no retorna fals
+     */
     bool find(int x) {
         comp2i = 0;
         return findInRoot(x, root);
     }
 
-    void display() {
+    /* Pre: --
+     * Post: s'imprimeix l'arbre en inordre pel canal estandard
+     */
+    void show() {
         inorder(root);
         cout << endl;
     }
