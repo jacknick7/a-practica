@@ -1,4 +1,4 @@
-OPCIONS = -D_JUDGE_ -ansi -O2 -Wall -Wextra -Wno-uninitialized -Wno-sign-compare -std=c++11
+OPCIONS = -D_JUDGE_ -ansi -O2 -Wextra -Wno-uninitialized -Wno-sign-compare -std=c++11
 
 all: main
 
