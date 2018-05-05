@@ -73,6 +73,7 @@ int binarySearch(int l, int r, int* dict, int elem, int& sear1) {
         }
         else {
             sear1 += 2;
+            ++sear1;
             return binarySearch(l, (m-1), dict, elem, sear1);
         }
     }
@@ -96,7 +97,7 @@ void binaryV1(vector<int>& dict, vector<int>& entr){
     int comp2 = 0;
     int start2 = clock();
     for (auto elem : entr) {
-        int comp2i = 0;
+	int comp2i = 0;
         int pos = binarySearch(0, n - 1, dic, elem, comp2i);
         comp2 += comp2i;
     }

@@ -86,7 +86,9 @@ private:
     }
     
     bool findInRoot(int x, node* t) {
-        if (t == NULL) return false;
+        if (t == NULL){
+	    return false;
+	}
         else if (x == t->dada) {
             comp2i += 1;
             return true;
@@ -95,8 +97,10 @@ private:
             comp2i += 2;
             findInRoot(x, t->esq);
         }
-        comp2i += 2;
-        findInRoot(x, t->dre);
+        else {
+	    comp2i += 2;
+	    findInRoot(x, t->dre);
+	}
         return false;
     }
 
