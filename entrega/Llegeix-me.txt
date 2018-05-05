@@ -1,0 +1,19 @@
+#Universitat Politècnica de Catalunya
+#Facultat d'Informàtica de Barcelona
+#Algorísmia
+#Pràctica de Hashing
+
+#Josep Ciurana (josep.ciurana)
+#Oriol Closa (oriol.closa)
+
+#Primavera de 2018
+
+#El codi està dins de la carpeta de codi, podeu compilar executant
+"make" dins de la carpeta i a continuació "./main.x". Podreu seleccionar
+quina entrada, tècnica i algorisme voleu dins mateix de l'execució.
+
+#Les dades d'entrada es troben a la carpeta de dades.
+
+#La documentació entregada es troba dins de la carpeta de documentació.
+
+#Les taules i els gràfics generats es troben dins de la carpeta de taules.
