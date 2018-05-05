@@ -84,7 +84,7 @@ void inserir1T(int versio, vector<int>& hash, int passos, int capacitat, int act
       clau2 = (clau2+passos)%capacitat;
     }
     if(!trobat){
-      cout << "ERROR: " << actual << endl;
+      //cout << "ERROR: " << actual << endl;
       ++errorsV1;
     }
   } 
@@ -260,7 +260,7 @@ void hash1T(int versio, vector<int>& dict, vector<int>& entr){
   cout << "#### RESULTAT ####" << endl;
   cout << "Trobats: " << trobats << endl;
   cout << "No trobats: " << notrobats << endl;
-  cout << "#### TAULA RESULTANT ####" << endl;
+  /*cout << "#### TAULA RESULTANT ####" << endl;
   for(int i=1; i<=capacitat; ++i){
     imprimirV1(i, hash[(i-1)]);
     if((i%elementsV1)==0){
@@ -269,7 +269,7 @@ void hash1T(int versio, vector<int>& dict, vector<int>& entr){
   }
   if((mida%elementsV1)!=0){
     cout << endl;
-  }
+  }*/
 }
 
 void hash2T(int versio, vector<int>& dict, vector<int>& entr){
@@ -324,7 +324,7 @@ void hash2T(int versio, vector<int>& dict, vector<int>& entr){
   cout << "#### RESULTAT ####" << endl;
   cout << "Trobats: " << trobats << endl;
   cout << "No trobats: " << notrobats << endl;
-  cout << "#### TAULA RESULTANT 1 ####" << endl;
+  /*cout << "#### TAULA RESULTANT 1 ####" << endl;
   for(int i=1; i<=capacitat; ++i){
     imprimirV1(i, hash[(i-1)]);
     if((i%elementsV1)==0){
@@ -343,10 +343,12 @@ void hash2T(int versio, vector<int>& dict, vector<int>& entr){
   }
   if((mida%elementsV1)!=0){
     cout << endl;
-  }
+  }*/
 }
 
-void hashV1(int versio, vector<int>& dict, vector<int>& entr){
+void hashV1(int versio, vector<int>& dict, vector<int>& entr, int c1, int c2){
+  c1V1 = c1;
+  c2V1 = c2;
   if((versio>0)&&(versio<4)){
     hash1T(versio, dict, entr);
   }

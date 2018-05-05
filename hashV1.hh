@@ -9,4 +9,4 @@ int obtenirPassos(int valor);
 int hashing(int valor, int capacitat);
 int hashing2(int valor, int capacitat);
 
-void hashV1(int versio, vector<int>& dict, vector<int>& entr);
+void hashV1(int versio, vector<int>& dict, vector<int>& entr, int c1, int c2);
