@@ -5,8 +5,8 @@
 int sear;
 
 /* Pre: --
- * Post: la funcio retorna el vector original ordenat usant merge sort (cost nlogn)
- *       i també el numero total de comparacions de claus 
+ * Post: la funcio ordena un segment del vector i acumula el numero
+ *       de comparacions
  */
 void merge(int* pdic, int fst, int m, int lst) {
     int ne = m - fst + 1;
@@ -42,7 +42,10 @@ void merge(int* pdic, int fst, int m, int lst) {
 }
 
 
-
+/* Pre: --
+ * Post: la funcio retorna el vector original ordenat usant merge sort (cost nlogn)
+ *       i també el numero total de comparacions de claus 
+ */
 void mergeSort(int* pdic, int fst, int lst) {
     if(fst < lst) {
         int m = (fst + lst) / 2;
@@ -94,7 +97,7 @@ void binaryV1(vector<int>& dict, vector<int>& entr){
     int start2 = clock();
     for (auto elem : entr) {
         int comp2i = 0;
-        int n = binarySearch(0, n - 1, dic, elem, comp2i);
+        int pos = binarySearch(0, n - 1, dic, elem, comp2i);
         comp2 += comp2i;
     }
     int stop2 = clock();

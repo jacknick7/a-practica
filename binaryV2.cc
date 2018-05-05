@@ -97,6 +97,7 @@ private:
         }
         comp2i += 2;
         findInRoot(x, t->dre);
+        return false;
     }
 
     void inorder(node* t)
