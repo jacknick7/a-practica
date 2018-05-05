@@ -1,0 +1,113 @@
+﻿#Universitat Politècnica de Catalunya
+#Facultat d'Informàtica de Barcelona
+#Algorísmia
+#Pràctica de Hashing
+
+#Josep Ciurana (josep.ciurana)
+#Oriol Closa (oriol.closa)
+
+#Primavera de 2018
+
+#Per generar els gràfics només cal executar les següents comandes en R fixant
+com a directori de treball la carpeta d'originals.
+
+#Codi de colors: c("#619fcc","#3e92cc","#3685b5","#0471a6","#025889","#01446b").
+
+D1 = read.csv("d1.csv", header = TRUE, sep = "\t");
+D2 = read.csv("d2.csv", header = TRUE, sep = "\t");
+D3 = read.csv("d3.csv", header = TRUE, sep = "\t");
+D4 = read.csv("d4.csv", header = TRUE, sep = "\t");
+D5 = read.csv("d5.csv", header = TRUE, sep = "\t");
+D6 = read.csv("d6.csv", header = TRUE, sep = "\t");
+windowsFonts(CMU=windowsFont("CMU Sans Serif"));
+par(family="CMU");
+boxplot(D1$Salts, D2$Salts, D3$Salts, D4$Salts, D5$Salts, D6$Salts, main="Salts", names=c("Linear", "Quadratic", "Double", "Cuckoo", "First", "Exact"), las=2, col=c("#619fcc","#3e92cc","#3685b5","#0471a6","#025889","#01446b"), border=c("#212121","#212121","#212121","#212121","#212121","#212121"), ylim=c(0, 3500));
+boxplot(D1$T1, D2$T1, D3$T1, D4$T1, D5$T1, D6$T1, main="Temps d'inserció totals", names=c("Linear", "Quadratic", "Double", "Cuckoo", "First", "Exact"), las=2, col=c("#619fcc","#3e92cc","#3685b5","#0471a6","#025889","#01446b"), border=c("#212121","#212121","#212121","#212121","#212121","#212121"), ylim=c(0, 0.1));
+boxplot(D1$T2, D2$T2, D3$T2, D4$T2, D5$T2, D6$T2, main="Temps de cerca totals", names=c("Linear", "Quadratic", "Double", "Cuckoo", "First", "Exact"), las=2, col=c("#619fcc","#3e92cc","#3685b5","#0471a6","#025889","#01446b"), border=c("#212121","#212121","#212121","#212121","#212121","#212121"), ylim=c(0, 30));
+boxplot(D1$T3, D2$T3, D3$T3, D4$T3, D5$T3, D6$T3, main="Temps de cerca totals (trobats)", names=c("Linear", "Quadratic", "Double", "Cuckoo", "First", "Exact"), las=2, col=c("#619fcc","#3e92cc","#3685b5","#0471a6","#025889","#01446b"), border=c("#212121","#212121","#212121","#212121","#212121","#212121"), ylim=c(0, 0.1));
+boxplot(D1$T4, D2$T4, D3$T4, D4$T4, D5$T4, D6$T4, main="Temps de cerca totals (no trobats)", names=c("Linear", "Quadratic", "Double", "Cuckoo", "First", "Exact"), las=2, col=c("#619fcc","#3e92cc","#3685b5","#0471a6","#025889","#01446b"), border=c("#212121","#212121","#212121","#212121","#212121","#212121"), ylim=c(0, 30));
+
+E1 = read.csv("e1.csv", header = TRUE, sep = "\t");
+E2 = read.csv("e2.csv", header = TRUE, sep = "\t");
+E3 = read.csv("e3.csv", header = TRUE, sep = "\t");
+E4 = read.csv("e4.csv", header = TRUE, sep = "\t");
+E5 = read.csv("e5.csv", header = TRUE, sep = "\t");
+E6 = read.csv("e6.csv", header = TRUE, sep = "\t");
+plot(E1$Salts, main="Salts", las=2, col="#619fcc", type="b", xaxp=c(1, 3, 2), ylim=c(0, 20000), xlab="Joc de proves", ylab="", axes=FALSE, frame.plot=TRUE);
+axis(side=2, labels=TRUE);
+axis(1, at=1:3, labels=c(1, 3, 5));
+lines(E2$Salts, las=2, col="#3e92cc", type="b");
+lines(E3$Salts, las=2, col="#3685b5", type="b");
+lines(E4$Salts, las=2, col="#0471a6", type="b");
+lines(E5$Salts, las=2, col="#025889", type="b");
+lines(E6$Salts, las=2, col="#01446b", type="b");
+plot(E1$Errors, main="Errors", las=2, col="#619fcc", type="b", xaxp=c(1, 3, 2), ylim=c(0, 500), xlab="Joc de proves", ylab="", axes=FALSE, frame.plot=TRUE);
+axis(side=2, labels=TRUE);
+axis(1, at=1:3, labels=c(1, 3, 5));
+lines(E2$Errors, las=2, col="#3e92cc", type="b");
+lines(E3$Errors, las=2, col="#3685b5", type="b");
+lines(E4$Errors, las=2, col="#0471a6", type="b");
+lines(E5$Errors, las=2, col="#025889", type="b");
+lines(E6$Errors, las=2, col="#01446b", type="b");
+
+F1 = read.csv("f1.csv", header = TRUE, sep = "\t");
+F2 = read.csv("f2.csv", header = TRUE, sep = "\t");
+F3 = read.csv("f3.csv", header = TRUE, sep = "\t");
+F4 = read.csv("f4.csv", header = TRUE, sep = "\t");
+F5 = read.csv("f5.csv", header = TRUE, sep = "\t");
+F6 = read.csv("f6.csv", header = TRUE, sep = "\t");
+plot(F1$Salts, main="Salts respecte el text d'entrada", las=2, col="#619fcc", type="b", xaxp=c(1, 3, 2), ylim=c(0, 2), xlab="Joc de proves", ylab="", axes=FALSE, frame.plot=TRUE);
+axis(side=2, labels=TRUE);
+axis(1, at=1:3, labels=c(1, 3, 5));
+lines(F2$Salts, las=2, col="#3e92cc", type="b");
+lines(F3$Salts, las=2, col="#3685b5", type="b");
+lines(F4$Salts, las=2, col="#0471a6", type="b");
+lines(F5$Salts, las=2, col="#025889", type="b");
+lines(F6$Salts, las=2, col="#01446b", type="b");
+plot(F1$Errors, main="Errors respecte el text d'entrada", las=2, col="#619fcc", type="b", xaxp=c(1, 3, 2), ylim=c(0, 0.25), xlab="Joc de proves", ylab="", axes=FALSE, frame.plot=TRUE);
+axis(side=2, labels=TRUE);
+axis(1, at=1:3, labels=c(1, 3, 5));
+lines(F2$Errors, las=2, col="#3e92cc", type="b");
+lines(F3$Errors, las=2, col="#3685b5", type="b");
+lines(F4$Errors, las=2, col="#0471a6", type="b");
+lines(F5$Errors, las=2, col="#025889", type="b");
+lines(F6$Errors, las=2, col="#01446b", type="b");
+
+BIN1 = read.csv("bin1.csv", header = TRUE, sep = "\t");
+BIN2 = read.csv("bin2.csv", header = TRUE, sep = "\t");
+boxplot(BIN1$Ins..Comp., BIN2$Ins..Comp., main="Comparacions en l'inserció", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 50000));
+boxplot(BIN1$Cer..Comp., BIN2$Cer..Comp., main="Comparacions en la cerca", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 50000));
+boxplot(BIN1$Comp., BIN2$Comp., main="Comparacions totals", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(55000, 60000));
+boxplot(BIN1$Ins..Temps, BIN2$Ins..Temps, main="Temps d'inserció totals", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 1.5));
+boxplot(BIN1$Cer..Temps, BIN2$Cer..Temps, main="Temps de cerca totals", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 1.5));
+boxplot(BIN1$Temps, BIN2$Temps, main="Temps totals", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 0.5));
+
+K1 = read.csv("k1.csv", header = TRUE, sep = "\t");
+K2 = read.csv("k2.csv", header = TRUE, sep = "\t");
+K3 = read.csv("k3.csv", header = TRUE, sep = "\t");
+K4 = read.csv("k4.csv", header = TRUE, sep = "\t");
+plot(K1$Salts.MITJANA, main="Salts segons els passos", las=2, col="#619fcc", type="b", xlab="Nombre de passos", ylab="");
+plot(K2$Salts.MITJANA, main="Salts segons els passos", las=2, col="#3e92cc", type="b", xlab="Nombre de passos", ylab="");
+plot(K3$Salts.MITJANA, main="Salts segons els passos", las=2, col="#3685b5", type="b", xlab="Nombre de passos", ylab="");
+plot(K4$Salts.MITJANA, main="Salts segons els passos", las=2, col="#0471a6", type="b", xlab="Nombre de passos", ylab="");
+
+plot(K1$Salts.MITJANA, main="Salts segons els passos", las=2, col="#619fcc", type="b", xlab="Nombre de passos", ylab="", xlim=c(0,64));
+plot(K2$Salts.MITJANA, main="Salts segons els passos", las=2, col="#3e92cc", type="b", xlab="Nombre de passos", ylab="", xlim=c(0,64));
+plot(K3$Salts.MITJANA, main="Salts segons els passos", las=2, col="#3685b5", type="b", xlab="Nombre de passos", ylab="", xlim=c(0,64), ylim=c(0, 150000)));
+plot(K4$Salts.MITJANA, main="Salts segons els passos", las=2, col="#0471a6", type="b", xlab="Nombre de passos", ylab="", xlim=c(0,64));
+
+BL1 = read.csv("bl1.csv", header = TRUE, sep = "\t");
+BL2 = read.csv("bl2.csv", header = TRUE, sep = "\t");
+boxplot(BL1$Fals, BL2$Fals, main="Falsos positius", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 50));
+boxplot(BL1$Positiu, BL2$Positiu, main="Positius totals", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 250));
+boxplot(BL1$Ins..Temps, BL2$Ins..Temps, main="Temps d'inserció totals", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 0.2));
+boxplot(BL1$Cer..Temps, BL2$Cer..Temps, main="Temps de cerca totals", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 0.2));
+boxplot(BL1$Temps, BL2$Temps, main="Temps totals", names=c("V1", "V2"), las=2, col=c("#619fcc","#3e92cc"), border=c("#212121","#212121"), ylim=c(0, 0.5));
+
+COM1 = read.csv("bin2.csv", header = TRUE, sep = "\t");
+COM2 = read.csv("d3a.csv", header = TRUE, sep = "\t");
+COM3 = read.csv("d4a.csv", header = TRUE, sep = "\t");
+COM4 = read.csv("bl2.csv", header = TRUE, sep = "\t");
+boxplot(COM1$Ins..Temps, COM2$T1, COM3$T1, COM4$Ins..Temps, main="Temps d'inserció totals", names=c("Binary V2", "Double", "Cuckoo", "Bloom V2"), las=2, col=c("#619fcc","#3e92cc","#3685b5","#0471a6"), border=c("#212121","#212121","#212121","#212121"), ylim=c(0, 0.1));
+boxplot(COM1$Cer..Temps, COM2$T2, COM3$T2, COM4$Cer..Temps, main="Temps de cerca totals", names=c("Binary V2", "Double", "Cuckoo", "Bloom V2"), las=2, col=c("#619fcc","#3e92cc","#3685b5","#0471a6"), border=c("#212121","#212121","#212121","#212121"), ylim=c(0, 30));
+boxplot(COM1$Temps, COM2$T5, COM3$T5, COM4$Temps, main="Temps totals", names=c("Binary V2", "Double", "Cuckoo", "Bloom V2"), las=2, col=c("#619fcc","#3e92cc","#3685b5","#0471a6"), border=c("#212121","#212121","#212121","#212121"), ylim=c(0, 30));
