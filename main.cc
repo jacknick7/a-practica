@@ -8,6 +8,7 @@
 #include "hashV1.hh"
 #include "hashV2.hh"
 #include "bloomV1.hh"
+#include "bloomV2.hh"
 
 using namespace std;
 
@@ -96,7 +97,18 @@ int main() {
 	  }
       }
       else if(type == "BL"){
+	cout << "Selecciona la versió [1] o [2]." << endl;
+	int versio;
+	cin >> versio;
+	if(versio==1){
           bloomV1(dict, entr);
+	}
+	else if(versio==2){
+          bloomV2(dict, entr);
+	}
+	else{
+	  cout << "Error, la versió seleccionada és incorrecta." << endl;
+	}
       }
       else{
 	cout << "Error, la cerca seleccionada és incorrecta." << endl;
