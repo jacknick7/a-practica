@@ -8,53 +8,127 @@
 #include "hashV1.hh"
 #include "hashV2.hh"
 #include "bloomV1.hh"
+#include "bloomV2.hh"
 
 using namespace std;
 
 int main() {
     bool automatic=true;
     if(automatic){
-      cout << "#&#&#&#&#" << endl;
-      for(int j=2; j<3; ++j){
-	string tipus="";
-	if(j==1){
-	  tipus = "linear";
-	}
-	else if(j==2){
-	  tipus = "quadratic";
-	}
-	else if(j==3){
-	  tipus = "double";
-	}
-	else{
-	  tipus = "cuckoo";
-	}
-	for(int i=2; i<5; ++i){
-	  ifstream File;
-	  stringstream fitxer1, fitxer2;
-	  fitxer1 << "dades/" << i << ".dict";
-	  fitxer2 << "dades/" << i << ".entr";
-	  File.open(fitxer1.str());
-	  int n;
-	  File >> n;
-	  vector<int> dict(n), entr(2*n);
-	  for (int i = 0; i < n; ++i) File >> dict[i];
-	  File.close();
-	  File.open(fitxer2.str());
-	  for (int i = 0; i < 2*n; ++i) File >> entr[i];
-	  File.close();
-	    for(int c1=0; c1<=64; ++c1){
-	      for(int c2=0; c2<=64; ++c2){
-		cout << "#@#@#@#@#" << endl;
-		cout << "C1: " << c1 << endl;
-		cout << "C2: " << c2 << endl;
-		cout << "JOC: " << i << endl;
-		cout << "#@#@#@#@#" << endl;
-		hashV1(j, dict, entr, c1, c2);
-		cout << "#&#&#&#&#" << endl;
-	      }
+      int tecnica=3;
+      if(tecnica==1){
+	cout << "#&#&#&#&#" << endl;
+	for(int j=1; j<2; ++j){
+	  string tipus="";
+	  if(j==1){
+	    tipus = "versió1";
+	  }
+	  else{
+	    tipus = "versió2";
+	  }
+	  for(int i=1; i<6; ++i){
+	    ifstream File;
+	    stringstream fitxer1, fitxer2;
+	    fitxer1 << "dades/" << i << ".dict";
+	    fitxer2 << "dades/" << i << ".entr";
+	    File.open(fitxer1.str());
+	    int n;
+	    File >> n;
+	    vector<int> dict(n), entr(2*n);
+	    for (int i = 0; i < n; ++i) File >> dict[i];
+	    File.close();
+	    File.open(fitxer2.str());
+	    for (int i = 0; i < 2*n; ++i) File >> entr[i];
+	    File.close();
+	    for(int k=0; k<5; ++k){
+	      cout << "#@#@#@#@#" << endl;
+	      cout << "K: " << k << endl;
+	      cout << "JOC: " << i << endl;
+	      cout << "#@#@#@#@#" << endl;
+	      binaryV1(dict, entr);	//Canviar això manualment
+	      cout << "#&#&#&#&#" << endl;
 	    }
-	 }
+	  }
+	}
+      }
+      else if(tecnica==2){
+	cout << "#&#&#&#&#" << endl;
+	for(int j=1; j<5; ++j){
+	  string tipus="";
+	  if(j==1){
+	    tipus = "linear";
+	  }
+	  else if(j==2){
+	    tipus = "quadratic";
+	  }
+	  else if(j==3){
+	    tipus = "double";
+	  }
+	  else{
+	    tipus = "cuckoo";
+	  }
+	  for(int i=2; i<5; ++i){
+	    ifstream File;
+	    stringstream fitxer1, fitxer2;
+	    fitxer1 << "dades/" << i << ".dict";
+	    fitxer2 << "dades/" << i << ".entr";
+	    File.open(fitxer1.str());
+	    int n;
+	    File >> n;
+	    vector<int> dict(n), entr(2*n);
+	    for (int i = 0; i < n; ++i) File >> dict[i];
+	    File.close();
+	    File.open(fitxer2.str());
+	    for (int i = 0; i < 2*n; ++i) File >> entr[i];
+	    File.close();
+	      for(int c1=0; c1<=64; ++c1){
+		for(int c2=0; c2<=64; ++c2){
+		  cout << "#@#@#@#@#" << endl;
+		  cout << "C1: " << c1 << endl;
+		  cout << "C2: " << c2 << endl;
+		  cout << "JOC: " << i << endl;
+		  cout << "#@#@#@#@#" << endl;
+		  hashV1(j, dict, entr, c1, c2);
+		  cout << "#&#&#&#&#" << endl;
+		}
+	      }
+	  }
+	}
+      }
+      else if(tecnica==3){
+	cout << "#&#&#&#&#" << endl;
+	for(int j=1; j<2; ++j){
+	  string tipus="";
+	  if(j==1){
+	    tipus = "versió1";
+	  }
+	  else{
+	    tipus = "versió2";
+	  }
+	  for(int i=1; i<6; ++i){
+	    ifstream File;
+	    stringstream fitxer1, fitxer2;
+	    fitxer1 << "dades/" << i << ".dict";
+	    fitxer2 << "dades/" << i << ".entr";
+	    File.open(fitxer1.str());
+	    int n;
+	    File >> n;
+	    vector<int> dict(n), entr(2*n);
+	    for (int i = 0; i < n; ++i) File >> dict[i];
+	    File.close();
+	    File.open(fitxer2.str());
+	    for (int i = 0; i < 2*n; ++i) File >> entr[i];
+	    File.close();
+	    for(int k=0; k<5; ++k){
+	      cout << "#@#@#@#@#" << endl;
+	      cout << "K: " << k << endl;
+	      cout << "JOC: " << i << endl;
+	      cout << "#@#@#@#@#" << endl;
+	      bloomV1(dict, entr);	//Canviar això manualment
+	      cout << "#&#&#&#&#" << endl;
+	    }
+	  }
+	}
       }
     }
     else{
@@ -142,7 +216,18 @@ int main() {
 	    }
 	}
 	else if(type == "BL"){
+	  cout << "Selecciona la versió [1] o [2]." << endl;
+	  int versio;
+	  cin >> versio;
+	  if(versio==1){
 	    bloomV1(dict, entr);
+	  }
+	  else if(versio==2){
+	    bloomV2(dict, entr);
+	  }
+	  else{
+	    cout << "Error, la versió seleccionada és incorrecta." << endl;
+	  }
 	}
 	else{
 	  cout << "Error, la cerca seleccionada és incorrecta." << endl;

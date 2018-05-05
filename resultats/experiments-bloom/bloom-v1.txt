@@ -1,0 +1,226 @@
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 1
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.001
+Temps per fer totes les cerques: 0.005
+Numero de fals positius: 0
+Numero total de positius: 7
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 1
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.001
+Temps per fer totes les cerques: 0.001
+Numero de fals positius: 0
+Numero total de positius: 7
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 1
+#@#@#@#@#
+Temps per generar la taula de bloom: 0
+Temps per fer totes les cerques: 0.001
+Numero de fals positius: 0
+Numero total de positius: 7
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 1
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.001
+Temps per fer totes les cerques: 0
+Numero de fals positius: 0
+Numero total de positius: 7
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 1
+#@#@#@#@#
+Temps per generar la taula de bloom: 0
+Temps per fer totes les cerques: 0.001
+Numero de fals positius: 0
+Numero total de positius: 7
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 2
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.029
+Numero de fals positius: 12
+Numero total de positius: 205
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 2
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.027
+Numero de fals positius: 12
+Numero total de positius: 205
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 2
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.025
+Numero de fals positius: 12
+Numero total de positius: 205
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 2
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.024
+Numero de fals positius: 12
+Numero total de positius: 205
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 2
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.023
+Numero de fals positius: 12
+Numero total de positius: 205
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 3
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.03
+Temps per fer totes les cerques: 0.027
+Numero de fals positius: 10
+Numero total de positius: 206
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 3
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.03
+Temps per fer totes les cerques: 0.025
+Numero de fals positius: 10
+Numero total de positius: 206
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 3
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.025
+Numero de fals positius: 10
+Numero total de positius: 206
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 3
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.024
+Numero de fals positius: 10
+Numero total de positius: 206
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 3
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.03
+Temps per fer totes les cerques: 0.023
+Numero de fals positius: 10
+Numero total de positius: 206
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 4
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.028
+Numero de fals positius: 5
+Numero total de positius: 195
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 4
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.026
+Numero de fals positius: 5
+Numero total de positius: 195
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 4
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.026
+Numero de fals positius: 5
+Numero total de positius: 195
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 4
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.024
+Numero de fals positius: 5
+Numero total de positius: 195
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 4
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.029
+Temps per fer totes les cerques: 0.024
+Numero de fals positius: 5
+Numero total de positius: 195
+#&#&#&#&#
+#@#@#@#@#
+K: 0
+JOC: 5
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.148
+Temps per fer totes les cerques: 0.132
+Numero de fals positius: 128
+Numero total de positius: 636
+#&#&#&#&#
+#@#@#@#@#
+K: 1
+JOC: 5
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.145
+Temps per fer totes les cerques: 0.131
+Numero de fals positius: 128
+Numero total de positius: 636
+#&#&#&#&#
+#@#@#@#@#
+K: 2
+JOC: 5
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.169
+Temps per fer totes les cerques: 0.128
+Numero de fals positius: 128
+Numero total de positius: 636
+#&#&#&#&#
+#@#@#@#@#
+K: 3
+JOC: 5
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.146
+Temps per fer totes les cerques: 0.237
+Numero de fals positius: 128
+Numero total de positius: 636
+#&#&#&#&#
+#@#@#@#@#
+K: 4
+JOC: 5
+#@#@#@#@#
+Temps per generar la taula de bloom: 0.193
+Temps per fer totes les cerques: 0.269
+Numero de fals positius: 128
+Numero total de positius: 636
+#&#&#&#&#
