@@ -96,7 +96,7 @@ int main() {
 	  }
       }
       else if(type == "BL"){
-	  bloomV1(dict, entr);
+          bloomV1(dict, entr);
       }
       else{
 	cout << "Error, la cerca seleccionada és incorrecta." << endl;
